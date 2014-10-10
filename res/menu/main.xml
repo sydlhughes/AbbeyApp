@@ -8,5 +8,6 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never"/>
+    <item android:id="@+id/Home" android:visible="true" android:alphabeticShortcut="H" android:checkable="true" android:titleCondensed="Home" android:title="Home" android:enabled="true" android:checked="true"></item>
 
 </menu>
