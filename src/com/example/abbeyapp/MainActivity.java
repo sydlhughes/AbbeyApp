@@ -1,19 +1,104 @@
 package com.example.abbeyapp;
 
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.*;
+import slidingMenu.model.NavDrawerItem;
+import slidingMenu.adapter.NavDrawerListAdapter;
+import java.util.*;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
+	private DrawerLayout mDrawerLayout;
+	private ListView mDrawerList;
+	private ActionBarDrawerToggle mDrawerToggle;
+	
+	//nav drawer title
+	private CharSequence mDrawerTitle;
+	
+	//used to store app title
+	private CharSequence mTitle;
+	
+	//slide menu items
+	private String[] navMenuTitles;
+	private TypedArray navMenuIcons;
+	
+	private ArrayList<NavDrawerItem> navDrawerItems;
+	private NavDrawerListAdapter adapter;
+	
+	
+	
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        mTitle = mDrawerTitle = getTitle();
+        
+        //load slide menu items
+        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        
+        //nav drawer icons from resources
+        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
+        
+        navDrawerItems = new ArrayList<NavDrawerItem>();
+        
+        // adding nav drawer items to array
+        //Home
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+        //-------Add others here---------------
+        
+        
+        
+        //Recycle Typed Array
+        navMenuIcons.recycle();
+        
+        //setting the nav drawer list adapter
+        adapter = new NavDrawerListAdapter(getApplicationContext(), navDrawerItems);
+        mDrawerList.setAdapter(adapter);
+        
+        //enabling action bar app icon and behaving it as toggle button
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+        
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, //nav menu toggle icon
+        		R.string.app_name, //nav drawer open
+        		R.string.app_name // Nav drawer close
+        		){
+        	public void onDrawerClosed(View view)
+        	{
+        		getActionBar().setTitle(mTitle);
+        		
+        		invalidateOptionsMenu();
+        	}
+        	public void onDrawerOpened(View drawerView)
+        	{
+        		getActionBar().setTitle(mDrawerTitle);
+        		invalidateOptionsMenu();
+        	}
+        };
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        
+/*        if(savedInstanceState == null)
+        {
+        	//on first time display view for first time nav item
+        	displayView(0);
+        }*/
     }
-// I did it
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -27,10 +112,50 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }//weird. I'm not asian.
+       if(mDrawerToggle.onOptionsItemSelected(item))
+       {
+    	   return true;
+       }
+       switch (item.getItemId())
+       {
+       case R.id.action_settings:
+    	   return true;
+    	   default:
+    		   return super.onOptionsItemSelected(item);
+       }
+    }
+    
+    //Called when invalidateOptionsMenu() is triggered
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu)
+    {
+    	//if nav drawer is opened, hide the action items
+    	boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+    	menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+    	return super.onPrepareOptionsMenu(menu);
+    }
+    
+    @Override
+    public void setTitle(CharSequence title)
+    {
+    	mTitle = title;
+    	getActionBar().setTitle(mTitle);
+    }
+    
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState)
+    {
+    	super.onPostCreate(savedInstanceState);
+    	mDrawerToggle.syncState();
+    	
+    }
+    
+    @Override
+    public void onConfigurationChanged(Configuration newConfig)
+    {
+    	super.onConfigurationChanged(newConfig);
+    	mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+    
+    
 }
