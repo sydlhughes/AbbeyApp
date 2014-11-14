@@ -9,12 +9,12 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textSize="16dp"
-        android:text="Visiting View"/>
+        android:text="Upcoming Events"/>
      
     <ImageView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtLabel"
-        android:src="@drawable/ic_visiting"
+        android:src="@drawable/ic_upcomingevents"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
      

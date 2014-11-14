@@ -1095,9 +1095,14 @@ containing a value of this type.
         public static final int ic_drawer=0x7f020058;
         public static final int ic_home=0x7f020059;
         public static final int ic_launcher=0x7f02005a;
-        public static final int list_item_bg_normal=0x7f02005b;
-        public static final int list_item_bg_pressed=0x7f02005c;
-        public static final int list_selector=0x7f02005d;
+        public static final int ic_map=0x7f02005b;
+        public static final int ic_monasticcommunity=0x7f02005c;
+        public static final int ic_news=0x7f02005d;
+        public static final int ic_twitter=0x7f02005e;
+        public static final int ic_upcomingevents=0x7f02005f;
+        public static final int list_item_bg_normal=0x7f020060;
+        public static final int list_item_bg_pressed=0x7f020061;
+        public static final int list_selector=0x7f020062;
     }
     public static final class id {
         public static final int Home=0x7f050042;
@@ -1221,8 +1226,12 @@ containing a value of this type.
         public static final int activity_main=0x7f030018;
         public static final int drawer_list_item=0x7f030019;
         public static final int fragment_home=0x7f03001a;
-        public static final int fragment_visiting=0x7f03001b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
+        public static final int fragment_map=0x7f03001b;
+        public static final int fragment_monasticcommunity=0x7f03001c;
+        public static final int fragment_news=0x7f03001d;
+        public static final int fragment_twitter=0x7f03001e;
+        public static final int fragment_upcomingevents=0x7f03001f;
+        public static final int support_simple_spinner_dropdown_item=0x7f030020;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
@@ -1272,11 +1281,16 @@ containing a value of this type.
         public static final int app_name=0x7f0a000d;
         /**  Content Description 
          */
-        public static final int desc_list_item_icon=0x7f0a0013;
-        public static final int drawer_close=0x7f0a0012;
-        public static final int drawer_open=0x7f0a0011;
+        public static final int desc_list_item_icon=0x7f0a0018;
+        public static final int drawer_close=0x7f0a0017;
+        public static final int drawer_open=0x7f0a0016;
         public static final int hello_world=0x7f0a000e;
         public static final int home=0x7f0a0010;
+        public static final int map=0x7f0a0015;
+        public static final int monastic_community=0x7f0a0011;
+        public static final int news=0x7f0a0012;
+        public static final int twitter=0x7f0a0014;
+        public static final int upcoming_events=0x7f0a0013;
     }
     public static final class style {
         /** 
