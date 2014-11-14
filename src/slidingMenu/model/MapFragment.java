@@ -1,7 +1,7 @@
 package slidingMenu.model;
 
 import android.R;
-import android.app.Fragment;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +13,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Activity {
 	public MapFragment(){}
 	
 	private GoogleMap map;
@@ -31,13 +31,13 @@ public class MapFragment extends Fragment {
 			map.addMarker(new MarkerOptions().position(LOCATION_ABBEY).title("Abbey"));
 		}
 	
-	@Override
+	/*@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance)
 	{
 		View rootView = inflater.inflate(R.layout.fragment_map, container, false);
 		return rootView;
 	}
-
+*/
 	public void onClick_StJohns(View v){
 		map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 		CameraUpdate update = CameraUpdateFactory.newLatLngZoom(LOCATION_STJOHNS, 20);
