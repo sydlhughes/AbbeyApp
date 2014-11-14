@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+     <RelativeLayout 
+         android:layout_height="fill_parent"
+         android:layout_width="fill_parent">
+     
+    <TabWidget 
+        android:id="@android:id//tabs"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    	android:layout_alignParentBottm="true"
+    <FrameLayout 
+        android:id="@android:id/tabcontent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="5p" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/txtLabel"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="16dp"
+        android:text="Monastic Community"/>
+     
+    <ImageView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtLabel"
+        android:src="@drawable/ic_monasticcommunity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+     
+ 
+</RelativeLayout>
